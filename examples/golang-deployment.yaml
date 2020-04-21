@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp
+spec:
+  selector:
+    matchLabels:
+      app: goapp
+  template:
+    metadata:
+      labels:
+        app: goapp
+    spec:
+      containers:
+      - name: goapp
+        image: mahkath/logserver:gin1
+        ports:
+          - containerPort: 11000
+        env:
+          - name: LOG_PATH
+            value: "/var/lib/kubelet/pods"
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        volumeMounts:
+          - name: logs
+            mountPath: /mnt/data
+      volumes:
+      - name: logs
+        emptyDir: {}

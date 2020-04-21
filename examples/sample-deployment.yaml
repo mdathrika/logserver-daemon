@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: hello
+          image: busybox
+          args:
+          - /bin/sh
+          - -c
+          - date; touch /mnt/data/out.log; while true; do sleep 2; echo "Hello from the Kubernetes cluster"  >> /mnt/data/out.log; done
+          volumeMounts:
+            - name: logs
+              mountPath: /mnt/data
+      volumes:
+      - name: logs
+        emptyDir: {}

@@ -1,0 +1,18 @@
+{{ define "/index.tmpl" }}
+<html><h1>
+	{{ .title }} in {{.uid}}
+</h1>
+
+{{$machine := .uid}}
+
+<table>
+{{ with .data }}
+			{{ range . }}
+      			<tr>
+              		<td><a href="/logs/{{$machine}}/{{ . }}"> {{ . }}</a></td>              		
+      			</tr>
+			{{ end }} 
+{{ end }}
+</table>
+</html>
+{{ end }}
