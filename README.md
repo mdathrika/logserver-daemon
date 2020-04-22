@@ -5,10 +5,12 @@ It also provides viewing STDOUT & STDERR logs for a given container.
 
 ## URL For Viewing Log
 `http://<NODE_IP>:11000/logs/<POD_UID>/<FILE_NAME>`
+
 e.g `http://localhost:11000/logs/d2649681-d971-4d47-93d9-cc2a7cba2c1b/out.log`
 
 ## List Files
 `http://<NODE_IP>:11000/logs/<POD_UID>`
+
 e.g `http://localhost:11000/logs/d2649681-d971-4d47-93d9-cc2a7cba2c1b`
 
 * **NODE_IP**: IP Address of Node where POD is running
