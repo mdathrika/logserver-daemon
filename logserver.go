@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// LOG hold env injection
 var LOG string = os.Getenv("LOG_PATH")
 
 func main() {
